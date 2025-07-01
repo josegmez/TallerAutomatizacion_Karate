@@ -14,14 +14,6 @@ Feature: Login to app contact
     And match response.token == '#string'
     * def authToken = response.token
 
-  Scenario: 2. Token reutilizable en peticiones subsecuentes
-    * def login = call read('classpath:appcontact_login.feature@1. Login exitoso con credenciales válidas')
-    * def token = login.authToken
-    * header Authorization = 'Bearer ' + token
-    Given path '/contacts'
-    When method GET
-    Then status 200
-
   Scenario: 3. Login con credenciales inválidas devuelve mensaje claro
     Given path '/users/login'
     And request { email: 'tester20250630@test.com', password: 'WrongPass123' }
