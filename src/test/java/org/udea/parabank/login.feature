@@ -15,7 +15,7 @@ Feature: Login to app contact
     * def authToken = response.token
 
   Scenario: 2. Token reutilizable en peticiones subsecuentes
-    * def login = call read('classpath:org/udea/parabank/login.feature@Customer Login only')
+    * def login = call read('classpath:appcontact_login.feature@1. Login exitoso con credenciales válidas')
     * def token = login.authToken
     * header Authorization = 'Bearer ' + token
     Given path '/contacts'
